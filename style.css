@@ -1,0 +1,454 @@
+/* Gelişmiş motokurye temalı, mobil uyumlu stil */
+:root {
+    --primary-color: #ff5722;  /* Turuncu tonunu daha canlı yaptım */
+    --secondary-color: #263238; /* Koyu gri-mavi */
+    --accent-color: #ffc107;    /* Altın sarısı */
+    --text-color: #333;
+    --light-color: #f9f9f9;
+    --card-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --hover-transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(145deg, #f7f7f7 0%, #e9e9e9 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Motosiklet Animasyonu */
+.motorcycle-animation {
+    position: fixed;
+    bottom: 0;
+    left: -100px; /* Başlangıç konumu (ekran dışında) */
+    z-index: 1000;
+    animation: ride 15s linear infinite;
+    opacity: 0.7;
+}
+
+.motorcycle {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+    transform-origin: center;
+    animation: bounce 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes ride {
+    0% {
+        left: -100px;
+        transform: translateY(0);
+    }
+    48% {
+        left: calc(100% + 100px);
+        transform: translateY(0);
+    }
+    50% {
+        left: -100px;
+        transform: translateY(300px);
+    }
+    98% {
+        left: calc(100% + 100px);
+        transform: translateY(300px);
+    }
+    100% {
+        left: -100px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0) rotate(5deg); }
+    100% { transform: translateY(-5px) rotate(-5deg); }
+}
+
+header {
+    background: var(--secondary-color);
+    background-image: linear-gradient(to right, var(--secondary-color), #37474f);
+    color: white;
+    padding: 1.5rem 1rem 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--primary-color);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Header basitleştirildi */
+
+.logo {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+h1 {
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+main {
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: var(--hover-transition);
+    border-left: 5px solid var(--primary-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-icon, .contact-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.info h2, .contact h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: var(--hover-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card {
+    text-align: center;
+}
+
+.contact-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.contact-option {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: var(--hover-transition);
+}
+
+.contact-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.contact-option i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-option:nth-child(2) i {
+    color: #25D366;
+}
+
+.contact-option h3 {
+    margin-bottom: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.contact p {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.contact a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid var(--primary-color);
+    margin-top: 0.5rem;
+    transition: var(--hover-transition);
+}
+
+.contact a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* WhatsApp butonu stilleri */
+.whatsapp-btn {
+    color: white;
+    border: 2px solid #25D366;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
+    border-color: #128C7E;
+}
+
+/* WhatsApp butonu için pulse animasyonu */
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Pulsating animation for phone number */
+.pulse-button {
+    animation: pulse-btn 2s infinite;
+}
+
+@keyframes pulse-btn {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 87, 34, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
+    }
+}
+
+footer {
+    background: var(--secondary-color);
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+/* Footer stilini sadeleştirme */
+.footer-content {
+    justify-content: center;
+    text-align: center;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .services {
+        grid-template-columns: 1fr;
+    }
+    
+    main {
+        max-width: 95%;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .contact-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .contact-option {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 10px 0;
+        box-sizing: border-box;
+    }
+    
+    .contact-option a {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .whatsapp-btn, .pulse-button {
+        width: 90%;
+        padding: 10px 15px;
+        font-size: 16px;
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+    .contact-card {
+        width: 100%;
+        padding: 15px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .motorcycle-animation {
+        display: none;
+    }
+    
+    header {
+        padding: 1.5rem 0.5rem 1.2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .service-icon, .contact-icon {
+        font-size: 2.5rem;
+    }
+    
+    .info p, .contact p {
+        font-size: 1rem;
+    }
+    
+    .contact a {
+        font-size: 1.3rem;
+        padding: 0.4rem 1.2rem;
+    }
+}
+
+/* SEO için yapısal görünürlük geliştirmeleri */
+h1, h2, h3 {
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
